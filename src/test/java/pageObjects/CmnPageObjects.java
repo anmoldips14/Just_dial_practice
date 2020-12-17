@@ -86,15 +86,23 @@ public class CmnPageObjects {
     }
 
     public void UserCanSeeAllItemsUnderSearchDrpDwn(String serchName) {
+        boolean result=false;
         List<WebElement> menuLink = driver.findElements(sautosearch_suggestion_drpdwn_search_btn);
         for (int i = 0; i < menuLink.size(); i++) {
             WebElement element = menuLink.get(i);
             //String innerHtml=element.getAttribute("innerHTML");
             String innerHtml = element.getText();
             //String innerHtml=element.getAttribute("innerHTML");
-            if (innerHtml.contains(serchName)) {
-               logger.info("Result option get in dropdown related to:" + serchName);
+            if (innerHtml.contains(serchName))
+            {
+                result=true;
+                break;
             }
+
+        }
+        if(result=true)
+        {
+            System.out.println("serach result dispaly :" +serchName);
         }
     }
 
