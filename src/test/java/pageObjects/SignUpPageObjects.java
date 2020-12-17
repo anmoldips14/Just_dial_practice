@@ -19,6 +19,7 @@ public class SignUpPageObjects {
     private By txt_btn_phone_no=By.xpath("//input[@id='lgn_mob']");
     private By btn_send_otp=By.xpath("//button[@id='lgn_smtn']");
     private By OTP_modal_window=By.xpath("//section[@id='OTPmodal']//span[@id='lgn_lg']");
+    private By OTP_send_msg=By.xpath("//div[@class='otp-text wrapper pb-10']");
     private By wrong_or_missing_credentials_msg=By.xpath("//div[@id='iup']");
 
             //private By sign_up = By.id("h_sin_up");
@@ -38,7 +39,7 @@ public void ClickOnLoginLink()
 
 public void EnterUnameAndNoAndSubmit(String name, String no)
 {
-   WebDriverWait wait=new WebDriverWait(driver,20);
+   WebDriverWait wait=new WebDriverWait(driver,30);
     WebElement nameTxtBox=wait.until(ExpectedConditions.elementToBeClickable(txt_btn_user_name));
     nameTxtBox.clear();
     nameTxtBox.sendKeys(name);
@@ -46,7 +47,7 @@ public void EnterUnameAndNoAndSubmit(String name, String no)
     //driver.findElement(txt_btn_user_name).sendKeys(name);
     logger.info("Name Entered");
     //driver.findElement(txt_btn_phone_no).sendKeys(no);
-    WebDriverWait wait1=new WebDriverWait(driver,20);
+    WebDriverWait wait1=new WebDriverWait(driver,30);
     WebElement phoneNoTxtBox=wait1.until(ExpectedConditions.elementToBeClickable(txt_btn_phone_no));
     phoneNoTxtBox.clear();
     phoneNoTxtBox.sendKeys(no);
@@ -65,6 +66,7 @@ public void EmptyNameAndMobileNoANdSubmit()
     logger.info("PhoneNo not entered");
     driver.findElement(btn_send_otp).click();
     logger.info("SendOtp clicked");
+
 }
 
 public void WrongMobileNoValidation(String message)
@@ -80,22 +82,22 @@ public void WrongMobileNoValidation(String message)
     }
 }
 
-public void OTP_SendValidation()
+public void OTP_SendValidation(String message)
 {
-      //String txt=driver.findElement(OTP_modal_window).getText();
+      String actualmsg=driver.findElement(OTP_send_msg).getText();
       //System.out.println(txt);
     //WebDriverWait wait3=new WebDriverWait(driver,20);
     //WebElement OTPWindow=wait3.until(ExpectedConditions.visibilityOf(driver.findElement(OTP_modal_window)));
     //OTPWindow.isDisplayed();
-    if(driver.findElement(OTP_modal_window).isDisplayed())
+    if( actualmsg.equalsIgnoreCase(message))
     {
         Assert.assertTrue(true);
-        logger.info("OTP modal window displayed when OTP send successfully");
+        logger.info("OTP modal window displayed and OTP send successfully");
     }
     else
     {
-        logger.fatal("OTP modal window not displayed when OTP not send successfully");
-        Assert.fail("OTP modal window not displayed when OTP not send successfully");
+        logger.fatal(" OTP not send successfully");
+        Assert.fail(" OTP not send successfully");
     }
 }
 

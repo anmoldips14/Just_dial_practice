@@ -1,6 +1,6 @@
-@t
-Feature: Health checkup of links
 
+Feature: Health checkup of links
+#validation remaining
   Background: Navigation to url
     Given User navigates to the application url
 

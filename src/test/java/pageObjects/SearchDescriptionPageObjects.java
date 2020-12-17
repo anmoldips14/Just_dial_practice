@@ -11,7 +11,7 @@ public class SearchDescriptionPageObjects
     private static final Logger logger= LogManager.getLogger(SearchDescriptionPageObjects.class);
     WebDriver driver;
 
-    private By search_result_page=By.xpath("//div[@class='result_page']");
+    private By search_result_page=By.id("myCarousel");
     private By search_result_list=By.xpath("//span[@class='lng_cont_name']");
 
 
