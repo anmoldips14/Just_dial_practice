@@ -2,6 +2,7 @@ Feature: To check the sign_up function
 
 Background:Navigation to the url
   Given User navigates to the application url
+@1
 
   Scenario:  User is able to Sign up in the application
     #Given User navigates to the application url

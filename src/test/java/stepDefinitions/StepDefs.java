@@ -75,13 +75,14 @@ public class StepDefs {
     @Given("User navigates to the application url")
     public void user_navigates_to_the_application_url()
     {
-        WebDriverFactory.navigateToTheUrl(base_url);
-        //WebDriverFactory.alertHandlingDismiss();
+
         scn.log("Browser navigated to home url:" +base_url);
         String expected="Justdial - Local Search, Social, News, Videos, Shopping";
         cmnpageobjects.validatePageTitleMatch(expected);
 
+
     }
+
 
     @When("User clicks on Sign up link at the top right corner of the application")
     public void user_clicks_on_sign_up_link_at_the_top_right_corner_of_the_application()
@@ -144,13 +145,10 @@ public class StepDefs {
     }
 
     @Then("User is able to see search result related to {string}")
-    public void user_is_able_to_see_search_result_related_to(String searchstring)
-    {
-       // WebDriverFactory.switchBrowserToTab();
-       // searchdescriptionpageobjects.ValidateResultPageIsDisplayedSuccessfully(searchstring);
-        //expected="Best Restaurants in Mumbai - Top Veg & Non Veg Restaurants - Order Food Online - Justdial";
-        //cmnpageobjects.validatePageTitleMatch(expected);
+    public void user_is_able_to_see_search_result_related_to(String searchstring) {
+        //cmnpageobjects.UserNavigatedToSearchRelatedResult(searchstring);
     }
+
 
     @Then("User is able to see the drop down under search text box with all the items with text {string}")
     public void user_is_able_to_see_the_drop_down_under_search_text_box_with_all_the_items_with_text(String partstring)
@@ -170,9 +168,9 @@ public class StepDefs {
 
 
     @Then("User is navigates to the corresponding link realted to {string}")
-    public void user_is_navigates_to_the_corresponding_link_realted_to(String string)
+    public void user_is_navigates_to_the_corresponding_link_realted_to(String Link)
     {
-       // WebDriverFactory.switchBrowserToTab();
+        cmnpageobjects.NavigatedToCorrLinkAfterClick(Link);
     }
 
 
@@ -186,10 +184,9 @@ public class StepDefs {
     }
 
     @When("User enter {string} in the Text box")
-    public void user_enter_in_the_text_box(String name) {
-        //WebDriverFactory.switchBrowserToTab();
+    public void user_enter_in_the_text_box(String name)
+    {
         cmnpageobjects.SetSearchTextBox(name);
-        //customercarepageobjects.TxtEnterInTxtBtn(name);
 
     }
 
