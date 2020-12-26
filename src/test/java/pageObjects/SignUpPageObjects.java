@@ -53,7 +53,9 @@ public void EnterUnameAndNoAndSubmit(String name, String no)
     phoneNoTxtBox.sendKeys(no);
     logger.info("PhoneNo entered");
 
-    driver.findElement(btn_send_otp).click();
+WebDriverWait wait3=new WebDriverWait(driver,30);
+    WebElement OTPSendbtn=wait3.until(ExpectedConditions.elementToBeClickable(btn_send_otp));//driver.findElement(btn_send_otp).click();
+    OTPSendbtn.click();
     logger.info("SendOtp clicked");
     //driver.findElement(OTP_modal_window).isDisplayed()
 
